@@ -38,18 +38,31 @@ public class Clock {
     }
 
     public Clock addClock(Clock clock) {
-        Clock clock1 = new Clock(6, 7, 47);
         int seconds = clock.getHouse() * 3600 + clock.getMinutes() * 60 + clock.getSeconds();
-        int seconds1 = clock1.getHouse() * 3600 + clock1.getMinutes() * 60 + clock1.getSeconds();
+        int seconds1 = getHouse() * 3600 + getMinutes() * 60 + getSeconds();
         int tempSeconds = seconds + seconds1;
         Clock tempClock = new Clock(tempSeconds);
         return tempClock;
     }
 
+    public void tickDown() {
+        setSeconds(getSeconds() - 1);
+        if (getSeconds() < 0) {
+            setSeconds(getSeconds() + 60);
+            setMinutes(getMinutes() - 1);
+        }
+        if (getMinutes() < 0) {
+            setMinutes(getMinutes() + 60);
+            setHouse(getHouse() - 1);
+        }
+        if (getHouse() < 0) {
+            setHouse(getHouse() + 24);
+        }
+    }
+
     public Clock subtractClock(Clock clock) {
-        Clock clock1 = new Clock(3, 9, 50);
         int seconds = clock.getHouse() * 3600 + clock.getMinutes() * 60 + clock.getSeconds();
-        int seconds1 = clock1.getHouse() * 3600 + clock1.getMinutes() * 60 + clock1.getSeconds();
+        int seconds1 = getHouse() * 3600 + getMinutes() * 60 + getSeconds();
         int tempSeconds = Math.abs(seconds - seconds1);
         Clock tempClock = new Clock(tempSeconds);
         return tempClock;
