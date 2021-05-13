@@ -2,7 +2,6 @@ package com.company;
 
 public class Clock {
 
-
     private int house;
     private int minutes;
     private int seconds;
@@ -38,6 +37,24 @@ public class Clock {
         setHouse(getHouse() % 24);
     }
 
+    public Clock addClock(Clock clock) {
+        Clock clock1 = new Clock(6, 7, 47);
+        int seconds = clock.getHouse() * 3600 + clock.getMinutes() * 60 + clock.getSeconds();
+        int seconds1 = clock1.getHouse() * 3600 + clock1.getMinutes() * 60 + clock1.getSeconds();
+        int tempSeconds = seconds + seconds1;
+        Clock tempClock = new Clock(tempSeconds);
+        return tempClock;
+    }
+
+    public Clock subtractClock(Clock clock) {
+        Clock clock1 = new Clock(3, 9, 50);
+        int seconds = clock.getHouse() * 3600 + clock.getMinutes() * 60 + clock.getSeconds();
+        int seconds1 = clock1.getHouse() * 3600 + clock1.getMinutes() * 60 + clock1.getSeconds();
+        int tempSeconds = Math.abs(seconds - seconds1);
+        Clock tempClock = new Clock(tempSeconds);
+        return tempClock;
+    }
+
     @Override
     public String toString() {
         return getHouse() + ":" + getMinutes() + ":" + getSeconds();
@@ -64,6 +81,6 @@ public class Clock {
     }
 
     public void setSeconds(int seconds) {
-            this.seconds = seconds;
+        this.seconds = seconds;
     }
 }
