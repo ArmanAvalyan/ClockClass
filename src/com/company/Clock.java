@@ -25,7 +25,7 @@ public class Clock {
         setSeconds((seconds % 3600) % 60);
     }
 
-    //converted into the time value in hours, minutes, and seconds
+    // converted into the time value in hours, minutes, and seconds
     public void setClock(int seconds) {
         setHouse((seconds / 3600) % 24);
         setMinutes((seconds % 3600) / 60);
@@ -43,7 +43,7 @@ public class Clock {
         setHouse(getHouse() % 24);
     }
 
-    //adds the time presented parameter class for the time represented in the current class
+    // adds the time presented parameter class for the time represented in the current class
     public Clock addClock(Clock clock) {
         int seconds = clock.getHouse() * 3600 + clock.getMinutes() * 60 + clock.getSeconds();
         int seconds1 = getHouse() * 3600 + getMinutes() * 60 + getSeconds();
@@ -74,7 +74,7 @@ public class Clock {
 
     }
 
-    //returns the difference between the time represented in the current object
+    // returns the difference between the time represented in the current object
     public Clock subtractClock(Clock clock) {
         int seconds = clock.getHouse() * 3600 + clock.getMinutes() * 60 + clock.getSeconds();
         int seconds1 = getHouse() * 3600 + getMinutes() * 60 + getSeconds();
