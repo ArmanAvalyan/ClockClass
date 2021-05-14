@@ -6,16 +6,19 @@ public class Clock {
     private int minutes;
     private int seconds;
 
+    // default constructor
     public Clock() {
         setHouse(12);
     }
 
+    // constructor with 3 parameters
     public Clock(int house, int minutes, int seconds) {
         setHouse(house);
         setMinutes(minutes);
         setSeconds(seconds);
     }
 
+    // constructor with 1 parameter
     public Clock(int seconds) {
         setHouse((seconds / 3600) % 24);
         setMinutes((seconds % 3600) / 60);
@@ -26,8 +29,10 @@ public class Clock {
         setHouse((seconds / 3600) % 24);
         setMinutes((seconds % 3600) / 60);
         setSeconds((seconds % 3600) % 60);
+
     }
 
+    // increments the time stored by one second.
     public void tick() {
         setSeconds(getSeconds() + 1);
         setMinutes(getMinutes() + getSeconds() / 60);
@@ -45,19 +50,26 @@ public class Clock {
         return tempClock;
     }
 
+    // decrements the time stored in an object by one second
     public void tickDown() {
         setSeconds(getSeconds() - 1);
         if (getSeconds() < 0) {
             setSeconds(getSeconds() + 60);
             setMinutes(getMinutes() - 1);
         }
+        setSeconds(getSeconds() % 60);
+
         if (getMinutes() < 0) {
             setMinutes(getMinutes() + 60);
             setHouse(getHouse() - 1);
         }
+        setMinutes(getMinutes() % 60);
+
         if (getHouse() < 0) {
             setHouse(getHouse() + 24);
         }
+        setHouse(getHouse() % 24);
+
     }
 
     public Clock subtractClock(Clock clock) {

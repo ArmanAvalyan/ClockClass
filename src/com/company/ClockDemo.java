@@ -26,7 +26,7 @@ public class ClockDemo {
         int secondSeconds = scanner.nextInt();
         Clock secondClock = new Clock(secondHours, secondMinutes, secondSeconds);
         for (int i = 0; i < 10; i++) {
-            secondClock.tick();
+            secondClock.tickDown();
             System.out.println(secondClock);
         }
 
